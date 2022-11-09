@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+
 import Spinner from '../components/Spinner'
 import AppointmentForm from '../components/AppointmentForm'
 import AppointmentItem from '../components/AppointmentItem'
+import { getAppointments } from '../features/appointment/appointmentSlice'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -24,8 +26,9 @@ function Dashboard() {
       navigate('/login')
     }
 
-    
+    dispatch(getAppointments())
 
+    
   }, [])
 
   if (isLoading) {
@@ -39,6 +42,7 @@ function Dashboard() {
         <p>Appointment Dashboard</p>
       </section>
 
+      {/* <GoalForm /> */}
       <AppointmentForm />
 
       <section className='content'>
@@ -53,7 +57,17 @@ function Dashboard() {
         )}
       </section>
 
-      
+      {/* <section className='content'>
+        {goals.length > 0 ? (
+          <div className='goals'>
+            {goals.map((goal) => (
+              <GoalItem key={goal._id} goal={goal} />
+            ))}
+          </div>
+        ) : (
+          <h3>You do not have any appointment</h3>
+        )}
+      </section> */}
     </>
   )
 }
