@@ -88,8 +88,8 @@ function AppointmentForm() {
           <div className="form-group">
             <label for="timeslots">Choose a time slot:</label>
               <select name="timeslots" id="timeslots">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
+                <option value="9-9.20">9 - 9.20</option>
+                <option value="saab">9.20 - 9.40</option>
               </select>
           </div>
           <div className='form-group'>

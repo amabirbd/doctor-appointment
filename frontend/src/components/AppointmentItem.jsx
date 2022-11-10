@@ -5,8 +5,11 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 function AppointmentItem({ appointment }) {
   const dispatch = useDispatch()
 
+  console.log("appointment: ", appointment)
+
   return (
     <div className='appointment'>
+
       
       <h2>{appointment.name}</h2>
       <div style={{ "display": "flex"}}>
