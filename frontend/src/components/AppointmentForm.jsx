@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { createAppointment } from '../features/appointment/appointmentSlice'
+import timeslots from '../../src/timeSlot.json'
 
 function AppointmentForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     date: '',
-    time: '',
+    timeSlot: '',
   })
 
-  const { name, email, date, time } = formData
+  const { name, email, date, timeSlot } = formData
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -47,6 +48,9 @@ function AppointmentForm() {
     console.log(formData)
       dispatch(createAppointment(formData))
   }
+
+  console.log("formdata: ", formData)
+  console.log("timeslots: ", timeslots)
 
   return (
     <section className='form'>
@@ -85,11 +89,16 @@ function AppointmentForm() {
               onChange={onChange}
             />
           </div>
+
           <div className="form-group">
-            <label for="timeslots">Choose a time slot:</label>
-              <select name="timeslots" id="timeslots">
-                <option value="9-9.20">9 - 9.20</option>
-                <option value="saab">9.20 - 9.40</option>
+            <label for="timeslot">Choose a time slot:</label>
+              <select name="timeSlot" id="timeSlot" onChange={onChange}>
+                {
+                  timeslots.map((slot) => (
+                    <option value={slot.value} key={slot.id}>{slot.slot}</option>
+
+                  ))
+                }
               </select>
           </div>
           <div className='form-group'>

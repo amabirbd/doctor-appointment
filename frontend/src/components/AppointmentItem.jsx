@@ -14,8 +14,8 @@ function AppointmentItem({ appointment }) {
       <h2>{appointment.name}</h2>
       <div style={{ "display": "flex"}}>
         <div>{new Date(appointment.date).toLocaleString('en-US')}</div>
-        <button onClick={() => dispatch(deleteAppointment(appointment._id))} className='close' style={{ "width": "30px"}}>
-          <DeleteForeverIcon />
+        <button onClick={() => dispatch(deleteAppointment(appointment._id))} className='close' style={{"margin": "5px"}} >
+          <DeleteForeverIcon style={{"color": "red"}} />
       </button>
       </div>
       
