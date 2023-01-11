@@ -2,24 +2,30 @@ import { useDispatch } from 'react-redux'
 import { deleteAppointment } from '../features/appointment/appointmentSlice'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+
 function AppointmentItem({ appointment }) {
   const dispatch = useDispatch()
-
-  console.log("appointment: ", appointment)
+  const appointmentDate = appointment.date.substr(0,10);
+  const timeSlot = JSON.parse(appointment.time)
 
   return (
-    <div className='appointment'>
-
+        <>
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {appointment.name}
+            </th>
+            <td class="px-6 py-4">
+              {appointmentDate}
+            </td>
+            <td class="px-6 py-4">
+              {timeSlot.slot}
+            </td>
+            <td class="px-6 py-4">
+              <button onClick={() => dispatch(deleteAppointment(appointment._id))} className='px-5' >
+                <DeleteForeverIcon className='text-red-600' />
+              </button>
+            </td>
+        </>
       
-      <h2>{appointment.name}</h2>
-      <div style={{ "display": "flex"}}>
-        <div>{new Date(appointment.date).toLocaleString('en-US')}</div>
-        <button onClick={() => dispatch(deleteAppointment(appointment._id))} className='close' style={{"margin": "5px"}} >
-          <DeleteForeverIcon style={{"color": "red"}} />
-      </button>
-      </div>
-      
-    </div>
   )
 }
 

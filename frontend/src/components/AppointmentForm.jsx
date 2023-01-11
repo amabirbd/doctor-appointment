@@ -92,10 +92,10 @@ function AppointmentForm() {
 
           <div className="form-group">
             <label for="timeslot">Choose a time slot:</label>
-              <select name="timeSlot" id="timeSlot" onChange={onChange}>
+              <select name="timeSlot" id="timeSlot" onChange={onChange} value={timeSlot} >
                 {
                   timeslots.map((slot) => (
-                    <option value={slot.value} key={slot.id}>{slot.slot}</option>
+                    <option value={JSON.stringify(slot)} key={slot.id}>{slot.slot}</option>
 
                   ))
                 }

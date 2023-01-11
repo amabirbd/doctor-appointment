@@ -2,12 +2,17 @@
 
 ## Usage
 
-Rename the .envexample to .env and add your MONGO_URI
+make sure you have installed and running mongodb in your system.
+
+Rename the .envexample to .env
+
+You can use the default MONGO_URI or you can add your own.
 
 ### Install dependencies
 
 ```
 # Backend deps
+at root folder
 npm install
 
 # Frontend deps
@@ -17,12 +22,8 @@ npm install
 
 ### Run Server
 
-```
-npm start
-```
-
-### Run frontend
+At root folder run -
 
 ```
-npm start
+npm run dev
 ```

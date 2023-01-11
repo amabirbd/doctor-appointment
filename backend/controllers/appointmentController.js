@@ -23,7 +23,7 @@ const setAppointment = asyncHandler(async (req, res) => {
     name: req.body.name,
     emai: req.body.email,
     date: req.body.date,
-    time: req.body.time,
+    time: req.body.timeSlot,
 
   })
 
