@@ -20,7 +20,7 @@ cd frontend
 npm install
 ```
 
-### Run Server
+### Run App
 
 At root folder run -
 
