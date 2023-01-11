@@ -10,13 +10,15 @@ You can use the default MONGO_URI or you can add your own.
 
 ### Install dependencies
 
-```
+
 # Backend deps
 at root folder
+```
 npm install
-
+```
 # Frontend deps
-cd frontend
+cd into frontend and run
+```
 npm install
 ```
 
@@ -27,3 +29,4 @@ At root folder run -
 ```
 npm run dev
 ```
+you should see the app at [http://localhost:3000/](http://localhost:3000/)
