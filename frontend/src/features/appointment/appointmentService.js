@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:5000/api/appointments/'
 
-// Create new goal
+// Create new appointment
 const createAppointment = async (appointmentData, token) => {
   const config = {
     headers: {
@@ -28,6 +28,21 @@ const getAppointments = async (token) => {
   return response.data
 }
 
+// update appointment
+const updateAppointment = async (appointmentId, appointmentData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  console.log(API_URL + appointmentId, appointmentData, config)
+
+  const response = await axios.put(API_URL + appointmentId, appointmentData, config)
+
+  return response.data
+}
+
 // Delete user appointment
 const deleteAppointment = async (appointmentId, token) => {
   const config = {
@@ -44,6 +59,7 @@ const deleteAppointment = async (appointmentId, token) => {
 const appointmentService = {
   createAppointment,
   getAppointments,
+  updateAppointment,
   deleteAppointment,
 }
 

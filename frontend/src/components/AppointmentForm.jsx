@@ -22,7 +22,6 @@ function AppointmentForm() {
     (state) => state.auth
   )
 
-
   useEffect(() => {
     if (isError) {
       toast.error(message)
@@ -46,11 +45,8 @@ function AppointmentForm() {
   const onSubmit = (e) => {
     e.preventDefault()
     console.log(formData)
-      dispatch(createAppointment(formData))
+    dispatch(createAppointment(formData))
   }
-
-  console.log("formdata: ", formData)
-  console.log("timeslots: ", timeslots)
 
   return (
     <section className='form'>

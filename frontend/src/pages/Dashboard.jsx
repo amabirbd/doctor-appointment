@@ -16,9 +16,11 @@ function Dashboard() {
     (state) => state.appointments
   )
 
+  // console.log("appointment: ", appointments)
+
   useEffect(() => {
     if (isError) {
-      console.log(message)
+      // console.log(message)
     }
 
     if (!user) {
@@ -28,9 +30,9 @@ function Dashboard() {
     dispatch(getAppointments())
 
     
-  }, [user, dispatch])
+  }, [user, dispatch, isError, message, navigate])
 
-  if (isLoading) {
+  if (isLoading && !appointments) {
     return <Spinner />
   }
 
@@ -51,7 +53,7 @@ function Dashboard() {
         <table class="flex justify-center w-full text-sm text-left text-gray-500 dark:text-gray-400">
             
             <tbody>
-            {appointments.length > 0 ? (
+            {appointments && appointments.length > 0 ? (
               <div className='appointments'>
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>

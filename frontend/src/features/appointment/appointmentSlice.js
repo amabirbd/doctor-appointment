@@ -47,6 +47,44 @@ export const getAppointments = createAsyncThunk(
   }
 )
 
+// // update user appointment
+// export const updateAppointment = createAsyncThunk(
+//   'appointments/update',
+//   async (id, appointmentData, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.user.token
+//       return await appointmentService.updateAppointment(id, appointmentData, token)
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString()
+//       return thunkAPI.rejectWithValue(message)
+//     }
+//   }
+// )
+
+// update appointment
+export const updateAppointment = createAsyncThunk(
+  'appointments/update',
+  async (appointmentId, appointmentData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await appointmentService.updateAppointment(appointmentId, appointmentData, token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Delete user appointment
 export const deleteAppointment = createAsyncThunk(
   'appointments/delete',
@@ -96,6 +134,19 @@ export const appointmentSlice = createSlice({
         state.appointments = action.payload
       })
       .addCase(getAppointments.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      // .addCase(updateAppointment.pending, (state) => {
+      //   state.isLoading = true
+      // })
+      .addCase(updateAppointment.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.appointments.push(action.payload)
+      })
+      .addCase(updateAppointment.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
