@@ -16,7 +16,7 @@ function Dashboard() {
     (state) => state.appointments
   )
 
-  // console.log("appointment: ", appointments)
+  console.log("appointments: ", appointments)
 
   useEffect(() => {
     if (isError) {

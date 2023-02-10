@@ -44,7 +44,7 @@ function AppointmentForm() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
+    console.log("form data in appointmentForm: ", formData)
     dispatch(createAppointment(formData))
   }
 

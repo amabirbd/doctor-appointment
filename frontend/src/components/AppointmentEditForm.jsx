@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAppointment } from '../features/appointment/appointmentSlice';
@@ -19,7 +18,7 @@ function AppointmentEditForm({changeModalState, appointment}) {
 
   const [formData, setFormData] = useState({
     name: appointment.name,
-    email: '',
+    email: appointment.email,
     date: '',
     timeSlot: '',
   })
@@ -106,7 +105,7 @@ function AppointmentEditForm({changeModalState, appointment}) {
                     className='form-control'
                     id='email'
                     name='email'
-                    value={email}
+                    value={email? email: ''}
                     placeholder='Enter your email'
                     onChange={onChange}
                   />

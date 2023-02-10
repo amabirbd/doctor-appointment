@@ -7,9 +7,10 @@ import AppointmentEditForm from './AppointmentEditForm'
 
 
 function AppointmentItem({ appointment }) {
+  console.log("appointment in appointment item: ", appointment)
   const dispatch = useDispatch()
   const appointmentDate = appointment?.date?.substr(0,10);
-  const timeSlot = JSON.parse(appointment.time)
+  const timeSlot = appointment.time ? JSON.parse(appointment.time) : ''
 
   const [showModal, setShowModal] = useState(false);
 
