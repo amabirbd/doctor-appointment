@@ -16,12 +16,12 @@ const getAppointments = asyncHandler(async (req, res) => {
 // @route   POST /api/appointments
 // @access  Private
 const setAppointment = asyncHandler(async (req, res) => {
-  
+  console.log(req.body)
 
   const appointment = await Appointment.create({
     user: req.user.id,
     name: req.body.name,
-    emai: req.body.email,
+    email: req.body.email,
     date: req.body.date,
     time: req.body.timeSlot,
 

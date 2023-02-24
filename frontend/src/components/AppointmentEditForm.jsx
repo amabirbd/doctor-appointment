@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function AppointmentEditForm({changeModalState, appointment}) {
-  console.log(appointment);
+  console.log("appointment in appointmment edit form: ", appointment);
 
   // const [formData, setFormData] = useState({
   //   name: appointment.name,
@@ -23,7 +23,6 @@ function AppointmentEditForm({changeModalState, appointment}) {
     timeSlot: '',
   })
 
-
   const { name, email, date, timeSlot } = formData
 
   const navigate = useNavigate()
@@ -32,7 +31,6 @@ function AppointmentEditForm({changeModalState, appointment}) {
     const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
-
 
     useEffect(() => {
     if (isError) {
